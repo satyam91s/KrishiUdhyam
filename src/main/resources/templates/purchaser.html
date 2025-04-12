@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KrishiUdyam - Purchaser</title>
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <link rel="stylesheet" href="CSS/purchaser.css">
+</head>
+<body>
+    <nav class="nav">
+        <div class="container">
+            <div class="nav-content">
+                <div class="nav-left">
+                    <span class="logo">KrishiUdyam</span>
+                    <div class="nav-links">
+                        <a href="#" class="nav-link">
+                            <i data-lucide="home"></i>
+                            <span>Home</span>
+                        </a>
+                        <a href="#" class="nav-link">
+                            <i data-lucide="shopping-cart"></i>
+                            <span>Find Product</span>
+                        </a>
+                        <a href="#" class="nav-link">
+                            <i data-lucide="dollar-sign"></i>
+                            <span>Crop Prices</span>
+                        </a>
+                        <a href="#" class="nav-link">
+                            <i data-lucide="info"></i>
+                            <span>About</span>
+                        </a>
+                        <a href="#" class="nav-link">
+                            <i data-lucide="phone"></i>
+                            <span>Contact</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="hero">
+        <div class="slider">
+            <img src="https://images.unsplash.com/photo-1472141521881-95d0e87e2e39?auto=format&fit=crop&w=1920" alt="Warehouse" class="slide active">
+            <img src="https://images.unsplash.com/photo-1595665593673-bf1ad72905c0?auto=format&fit=crop&w=1920" alt="Warehouse" class="slide">
+            <img src="https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=1920" alt="Warehouse" class="slide">
+        </div>
+        <div class="hero-content">
+            <div class="container">
+                <div class="hero-text">
+                    <h1>Source Quality Agricultural Products</h1>
+                    <p>Connect directly with verified farmers and get the best prices</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section class="sellers">
+        <div class="container">
+            <h2>Available Sellers</h2>
+            <div class="purchaser-grid" id="sellerGrid"></div>
+            <div class="text-center">
+                <a href="/sellers" class="btn btn-primary">
+                    View All Sellers
+                    <i data-lucide="arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section class="prices">
+        <div class="container">
+            <h2>Current Crop Prices</h2>
+    
+            <div class="price-grid">
+                <div class="card" th:each="crop : ${baseprice}">
+                    <h3 class="card-title" th:text="${crop.name}">Crop Name</h3>
+                    <p class="text-3xl text-green-700 font-bold">
+                        ₹<span th:text="${crop.price}">0</span>
+                    </p>
+                    <p class="text-gray-600">per quintal</p>
+                </div>
+            </div>
+    
+            <div class="text-center">
+                <a href="/prices" class="btn btn-primary">
+                    Visit Price Page
+                    <i data-lucide="arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+    
+
+    <section class="products">
+        <div class="container">
+            <div class="section-header">
+                <h2>Purchased Products</h2>
+            </div>
+            <div class="product-grid" id="purchasedGrid"></div>
+            <div class="text-center">
+                <a href="/purchased" class="btn btn-primary">
+                    View All Purchases
+                    <i data-lucide="arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact">
+        <div class="container">
+            <div class="contact-grid">
+                <div class="contact-form">
+                    <h2>Contact Us</h2>
+                    <form>
+                        <div class="form-group">
+                            <label>Name</label>
+                            <input type="text" class="form-input">
+                        </div>
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input type="email" class="form-input">
+                        </div>
+                        <div class="form-group">
+                            <label>Message</label>
+                            <textarea class="form-input"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Send Message</button>
+                    </form>
+                </div>
+                <div class="location">
+                    <h2>Our Location</h2>
+                    <div class="location-card">
+                        <div class="location-item">
+                            <i data-lucide="map-pin"></i>
+                            <div>
+                                <h3>Head Office</h3>
+                                <p>123 Farmer's Market Road<br>Agricultural District<br>New Delhi, 110001</p>
+                            </div>
+                        </div>
+                        <div class="location-item">
+                            <i data-lucide="mail"></i>
+                            <div>
+                                <h3>Email</h3>
+                                <p>contact@KrishiUdyam.com</p>
+                            </div>
+                        </div>
+                        <div class="location-item">
+                            <i data-lucide="phone"></i>
+                            <div>
+                                <h3>Phone</h3>
+                                <p>+91 11 2345 6789</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <h3>KrishiUdyam</h3>
+                    <p>Connecting purchasers with trusted farmers for quality agricultural products.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Find Product</a></li>
+                        <li><a href="#">Crop Prices</a></li>
+                        <li><a href="#">About Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Resources</h3>
+                    <ul>
+                        <li><a href="#">Market Updates</a></li>
+                        <li><a href="#">Purchase Guide</a></li>
+                        <li><a href="#">Success Stories</a></li>
+                        <li><a href="#">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Newsletter</h3>
+                    <p>Subscribe for market updates and news</p>
+                    <div class="newsletter">
+                        <input type="email" placeholder="Your email" class="form-input">
+                        <button class="btn btn-primary">
+                            <i data-lucide="send"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2025 KrishiUdyam. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="JS/purchaser.js"></script>
+</body>
+</html>

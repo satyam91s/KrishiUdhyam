@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KrishiUdyam - Government</title>
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <link rel="stylesheet" href="CSS/government.css">
+</head>
+<body>
+    <nav class="nav">
+        <div class="container">
+            <div class="nav-content">
+                <div class="nav-left">
+                    <span class="logo">KrishiUdyam</span>
+                    <div class="nav-links">
+                        <a href="#" class="nav-link">
+                            <i data-lucide="home"></i>
+                            <span>Dashboard</span>
+                        </a>
+                        <a href="#" class="nav-link">
+                            <i data-lucide="users"></i>
+                            <span>Farmers</span>
+                        </a>
+                        <a href="#" class="nav-link">
+                            <i data-lucide="shopping-bag"></i>
+                            <span>Purchasers</span>
+                        </a>
+                        <a href="#" class="nav-link">
+                            <i data-lucide="check-circle"></i>
+                            <span>Verifications</span>
+                        </a>
+                        <a href="#" class="nav-link">
+                            <i data-lucide="file-text"></i>
+                            <span>E-Certificates</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="dashboard-stats">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <i data-lucide="users"></i>
+                    <div>
+                        <h3>Total Farmers</h3>
+                        <p>1,234</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <i data-lucide="shopping-bag"></i>
+                    <div>
+                        <h3>Total Purchasers</h3>
+                        <p>567</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <i data-lucide="check-circle"></i>
+                    <div>
+                        <h3>Pending Verifications</h3>
+                        <p>45</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <i data-lucide="file-text"></i>
+                    <div>
+                        <h3>E-Certificates Issued</h3>
+                        <p>789</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section class="crop-prices">
+        <div class="container">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+                <h2>Crop Prices</h2>
+                <button class="btn btn-primary" onclick="openCropPriceForm()">Add Price</button>
+            </div>
+            <div class="crop-prices-grid">
+                <div th:each="price : ${baseprice}" class="card">
+                    <h4 th:text="${price.name}" class="card-title"></h4>
+                    <p>
+                        <strong>Price:</strong> ₹<span th:text="${price.price}"></span><br>
+                        <span style="font-weight: normal;">per quintal</span>
+                      </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Modal Form -->
+    <div class="modal" id="cropPriceModal">
+        <div class="modal-content card">
+            <span class="close-btn" onclick="closeCropPriceForm()">&times;</span>
+            <h3>Add Crop Price</h3>
+            <form th:action="@{/government/addprice}" method="post" th:object="${BasePrice}">
+                <div style="margin-bottom: 1rem;">
+                    <label>Crop Name</label><br>
+                    <input type="text" th:field="*{name}" required>
+                </div>
+                <div style="margin-bottom: 1rem;">
+                    <label>Price per Quintal (₹)</label><br>
+                    <input type="number" th:field="*{price}" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Save</button>
+            </form>
+        </div>
+    </div>
+    
+    <section class="verification-requests">
+        <div class="container">
+            <h2>Pending Verification Requests</h2>
+            <div class="requests-grid" id="requestsGrid"></div>
+        </div>
+    </section>
+
+    <section class="recent-deals">
+        <div class="container">
+            <h2>Recent Deals</h2>
+            <div class="deals-grid" id="dealsGrid"></div>
+        </div>
+    </section>
+
+    <section class="certificates">
+        <div class="container">
+            <h2>E-Certificates</h2>
+            <div class="certificates-grid" id="certificatesGrid"></div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <h3>FarmConnect Admin</h3>
+                    <p>Government administration panel for managing and monitoring agricultural transactions.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#">Dashboard</a></li>
+                        <li><a href="#">Farmers</a></li>
+                        <li><a href="#">Purchasers</a></li>
+                        <li><a href="#">Verifications</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Resources</h3>
+                    <ul>
+                        <li><a href="#">Guidelines</a></li>
+                        <li><a href="#">Reports</a></li>
+                        <li><a href="#">Statistics</a></li>
+                        <li><a href="#">Documentation</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Support</h3>
+                    <p>Need assistance? Contact support</p>
+                    <div class="support-contact">
+                        <p><i data-lucide="mail"></i> admin@KrishiUdyam.gov.in</p>
+                        <p><i data-lucide="phone"></i> +91 11 2345 6789</p>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2025 FarmConnect Government Administration. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="JS/government.js"></script>
+</body>
+</html>

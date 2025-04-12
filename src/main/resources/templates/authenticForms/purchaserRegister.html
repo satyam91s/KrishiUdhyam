@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Purchaser Registration - KrishiUdyam</title>
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <link rel="stylesheet" th:href="@{/css/auth.css}">
+</head>
+
+<body>
+    <div class="auth-container">
+        <div class="auth-card">
+            <div class="auth-header">
+                <i data-lucide="shopping-cart" class="auth-icon"></i>
+                <h1 style="color: aliceblue;">Purchaser Registration</h1>
+                <p>Join KrishiUdyam to connect with verified farmers</p>
+            </div>
+
+            <form th:action="@{/purchaser/register-purchaser}" method="post" th:object="${purchaser}" class="auth-form">
+
+                <div class="form-group">
+                    <label>Name</label>
+                    <input type="text" class="form-input" th:field="*{name}" required>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Business Email</label>
+                        <input type="email" class="form-input" th:field="*{email}" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Contact</label>
+                        <input type="text" class="form-input" th:field="*{contact}" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>State</label>
+                    <select class="form-input" th:field="*{state}" required>
+                        <option value="">Select State</option>
+                        <option value="mp">Madhya Pradesh</option>
+                        <option value="up">Uttar Pradesh</option>
+                        <option value="delhi">Delhi</option>
+                        <option value="punjab">Punjab</option>
+                        <option value="haryana">Haryana</option>
+                        <option value="rajasthan">Rajasthan</option>
+                        <option value="gujarat">Gujarat</option>
+                        <option value="maharashtra">Maharashtra</option>
+                    </select>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>District</label>
+                        <input type="text" class="form-input" th:field="*{district}" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Tehsil</label>
+                        <input type="text" class="form-input" th:field="*{tehsil}" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Business Address</label>
+                    <input type="text" class="form-input" th:field="*{address}" required>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Business Document Type</label>
+                        <select class="form-input" th:field="*{id_type}" required>
+                            <option value="">Select Document Type</option>
+                            <option value="gst">GST Registration</option>
+                            <option value="msme">MSME Registration</option>
+                            <option value="company">Company Registration</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Document Number</label>
+                        <input type="text" class="form-input" th:field="*{gov_id}" required>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Password</label>
+                        <div class="password-input">
+                            <input type="password" class="form-input" th:field="*{password}" required>
+                            <i data-lucide="eye" class="password-toggle"></i>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Confirm Password</label>
+                        <div class="password-input">
+                            <input type="password" class="form-input" required>
+                            <i data-lucide="eye" class="password-toggle"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group terms">
+                    <label class="checkbox-label">
+                        <input type="checkbox" required>
+                        <span>I agree to the <a href="#">Terms & Conditions</a> and <a href="#">Privacy
+                                Policy</a></span>
+                    </label>
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-block">Request For Purchaser Account</button>
+            </form>
+
+            <div class="auth-footer">
+                <p>Already have an account? <a th:href="@{/login}">Login here</a></p>
+                <p>Are you a farmer? <a th:href="@{/register-farmer}">Register as Farmer</a></p>
+            </div>
+        </div>
+    </div>
+
+    <script th:src="@{/js/auth.js}"></script>
+</body>
+
+</html>

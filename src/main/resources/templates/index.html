@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KrishiUdyam - Direct Market Access to Farmer</title>
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <link rel="stylesheet" href="CSS/public.css">
+</head>
+<body>
+    <nav class="nav">
+        <div class="container">
+            <div class="nav-content">
+                <div class="nav-left">
+                    <span class="logo">KrishiUdyam</span>
+                    <div class="nav-links">
+                        <a href="#features" class="nav-link">
+                            <i data-lucide="layout-grid"></i>
+                            <span>Features</span>
+                        </a>
+                        <a href="#how-it-works" class="nav-link">
+                            <i data-lucide="help-circle"></i>
+                            <span>How It Works</span>
+                        </a>
+                        <a href="#testimonials" class="nav-link">
+                            <i data-lucide="message-circle"></i>
+                            <span>Testimonials</span>
+                        </a>
+                        <a href="#contact" class="nav-link">
+                            <i data-lucide="phone"></i>
+                            <span>Contact</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="nav-right">
+                    <a href=""><button class="btn btn-secondary">Login</button></a>
+                    <a href="farmerRegister"><button class="btn btn-primary">Register</button></a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="hero">
+        <div class="slider">
+            <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1920" alt="Farm" class="slide active">
+            <img src="https://images.unsplash.com/photo-1625246333195-78d9c38ad449?auto=format&fit=crop&w=1920" alt="Farm" class="slide">
+            <img src="https://images.unsplash.com/photo-1557234195-bd9f290f0e4d?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Farm" class="slide">
+        </div>
+        <div class="hero-content">
+            <div class="container">
+                <div class="hero-text">
+                    <h1>Revolutionizing Agricultural Commerce</h1>
+                    <p>Join India's premier platform connecting farmers, purchasers, and government agencies in a seamless digital ecosystem.</p>
+                    <div class="hero-buttons">
+                        <button class="btn btn-primary btn-lg" onclick="showRegisterModal()">Get Started</button>
+                        <button class="btn btn-secondary btn-lg" onclick="location.href='#features'">Learn More</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section id="features" class="features">
+        <div class="container">
+            <h2>Choose Your Role</h2>
+            <div class="features-grid">
+                <div class="feature-card farmer">
+                    <div class="icon-circle">
+                        <i data-lucide="sprout"></i>
+                    </div>
+                    <h3>For Farmers</h3>
+                    <ul>
+                        <li>Direct access to verified purchasers</li>
+                        <li>Real-time market prices</li>
+                        <li>Secure payment system</li>
+                        <li>Digital record keeping</li>
+                        <li>Government scheme updates</li>
+                    </ul>
+                    <a href="farmerRegister"><button class="btn btn-primary" >Register as Farmer</button></a>
+                </div>
+                <div class="feature-card purchaser">
+                    <div class="icon-circle">
+                        <i data-lucide="shopping-cart"></i>
+                    </div>
+                    <h3>For Purchasers</h3>
+                    <ul>
+                        <li>Direct sourcing from farmers</li>
+                        <li>Quality assurance</li>
+                        <li>Bulk purchase options</li>
+                        <li>Transparent pricing</li>
+                        <li>Supply chain management</li>
+                    </ul>
+                   <a href="purchaserRegister"><button class="btn btn-primary">Register as Purchaser</button></a> 
+                </div>
+                <div class="feature-card government">
+                    <div class="icon-circle">
+                        <i data-lucide="landmark"></i>
+                    </div>
+                    <h3>For Government</h3>
+                    <ul>
+                        <li>Market monitoring</li>
+                        <li>Transaction oversight</li>
+                        <li>Policy implementation</li>
+                        <li>Digital certification</li>
+                        <li>Data analytics</li>
+                    </ul>
+                    <button class="btn btn-primary" onclick="showLoginModal()">Government Portal</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="how-it-works" class="how-it-works">
+        <div class="container">
+            <h2>How It Works</h2>
+            <div class="steps-grid">
+                <div class="step-card">
+                    <div class="step-number">1</div>
+                    <i data-lucide="user-plus"></i>
+                    <h3>Register & Verify</h3>
+                    <p>Create your account and complete the verification process with valid documents.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">2</div>
+                    <i data-lucide="file-text"></i>
+                    <h3>Create Listings</h3>
+                    <p>List your products or requirements with detailed specifications and pricing.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">3</div>
+                    <i data-lucide="handshake"></i>
+                    <h3>Connect & Trade</h3>
+                    <p>Find matching partners, negotiate terms, and complete secure transactions.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">4</div>
+                    <i data-lucide="check-circle"></i>
+                    <h3>Complete & Review</h3>
+                    <p>Finalize deals and share feedback to build trust in the community.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="testimonials" class="testimonials">
+        <div class="container">
+            <h2>Success Stories</h2>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-image">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150" alt="Farmer">
+                    </div>
+                    <div class="testimonial-content">
+                        <p>"KrishiUdyam has transformed how I sell my produce. Better prices and direct access to buyers."</p>
+                        <h4>Rajesh Kumar</h4>
+                        <span>Farmer, Punjab</span>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-image">
+                        <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=150" alt="Purchaser">
+                    </div>
+                    <div class="testimonial-content">
+                        <p>"Quality produce directly from verified farmers. Our procurement process is now much more efficient."</p>
+                        <h4>Priya Sharma</h4>
+                        <span>Purchaser, Delhi</span>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-image">
+                        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=150" alt="Official">
+                    </div>
+                    <div class="testimonial-content">
+                        <p>"The platform has significantly improved transparency and efficiency in agricultural trade."</p>
+                        <h4>Amit Patel</h4>
+                        <span>Agriculture Officer</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="stats" class="stats">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <i data-lucide="users"></i>
+                    <h3>200+</h3>
+                    <p>Registered Farmers</p>
+                </div>
+                <div class="stat-card">
+                    <i data-lucide="shopping-bag"></i>
+                    <h3>500+</h3>
+                    <p>Active Purchasers</p>
+                </div>
+                <div class="stat-card">
+                    <i data-lucide="indian-rupee"></i>
+                    <h3>₹100T+</h3>
+                    <p>Trade Volume</p>
+                </div>
+                <div class="stat-card">
+                    <i data-lucide="map"></i>
+                    <h3>3+</h3>
+                    <p>States Covered</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2>Get In Touch</h2>
+            <div class="contact-grid">
+                <div class="contact-form">
+                    <form>
+                        <div class="form-group">
+                            <label>Name</label>
+                            <input type="text" class="form-input" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input type="email" class="form-input" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Subject</label>
+                            <select class="form-input">
+                                <option>General Inquiry</option>
+                                <option>Technical Support</option>
+                                <option>Partnership</option>
+                                <option>Feedback</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Message</label>
+                            <textarea class="form-input" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Send Message</button>
+                    </form>
+                </div>
+                <div class="contact-info">
+                    <div class="info-card">
+                        <i data-lucide="map-pin"></i>
+                        <h3>Visit Us</h3>
+                        <p>54A, Vijay Nagar, Indore (MP), 455350</p>
+                    </div>
+                    <div class="info-card">
+                        <i data-lucide="phone"></i>
+                        <h3>Call Us</h3>
+                        <p>Toll Free: 1800-123-4567, Support: +91 6289XXXXXX</p>
+                    </div>
+                    <div class="info-card">
+                        <i data-lucide="mail"></i>
+                        <h3>Email Us</h3>
+                        <p>info@KrishiUdyam.com, support@KrishiUdyam.com</p>
+                    </div>
+                    <div class="info-card">
+                        <i data-lucide="clock"></i>
+                        <h3>Working Hours</h3>
+                        <p>Monday - Saturday<br>9:00 AM - 6:00 PM</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <h3>Login to KrishiUdyam</h3>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label>User Type</label>
+                    <select class="form-input" required>
+                        <option value="">Select User Type</option>
+                        <option value="farmer">Farmer</option>
+                        <option value="purchaser">Purchaser</option>
+                        <option value="government">Government Official</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" class="form-input" required>
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" class="form-input" required>
+                </div>
+                <div class="form-group">
+                    <label class="checkbox-label">
+                        <input type="checkbox">
+                        <span>Remember me</span>
+                    </label>
+                    <a href="#" class="forgot-password">Forgot Password?</a>
+                </div>
+                <div class="modal-actions">
+                    <button type="button" class="btn btn-secondary" onclick="hideLoginModal()">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Login</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <h3>KrishiUdyam</h3>
+                    <p>Revolutionizing agricultural commerce through digital innovation and trusted connections.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#how-it-works">How It Works</a></li>
+                        <li><a href="#testimonials">Success Stories</a></li>
+                        <li><a href="#contact">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Resources</h3>
+                    <ul>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Documentation</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Newsletter</h3>
+                    <p>Stay updated with latest agricultural news and market trends</p>
+                    <div class="newsletter">
+                        <input type="email" placeholder="Your email">
+                        <button class="btn btn-primary">
+                            <i data-lucide="send"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2025 KrishiUdyam. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="JS/public.js"></script>
+</body>
+</html>

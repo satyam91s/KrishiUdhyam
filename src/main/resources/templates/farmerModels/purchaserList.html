@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Available Purchasers - KrishiUdyam</title>
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <link rel="stylesheet" href="CSS/lists.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-content">
+                <div class="nav-left">
+                    <a href="farmer-dashboard.html" class="logo">
+                        <i data-lucide="sprout"></i>
+                        <span>KrishiUdyam</span>
+                    </a>
+                    <div class="nav-links">
+                        <a href="farmer-dashboard.html" class="nav-link">
+                            <i data-lucide="home"></i>
+                            <span>Dashboard</span>
+                        </a>
+                        <a href="farmer-products.html" class="nav-link">
+                            <i data-lucide="package"></i>
+                            <span>My Products</span>
+                        </a>
+                        <a href="farmer-purchasers.html" class="nav-link active">
+                            <i data-lucide="users"></i>
+                            <span>Purchasers</span>
+                        </a>
+                        <a href="farmer-transactions.html" class="nav-link">
+                            <i data-lucide="indian-rupee"></i>
+                            <span>Transactions</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="nav-right">
+                    <button class="btn btn-outline">
+                        <i data-lucide="bell"></i>
+                        <span class="notification-badge">3</span>
+                    </button>
+                    <button class="btn btn-outline">
+                        <i data-lucide="user"></i>
+                        <span>Profile</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <div class="container">
+            <div class="page-header">
+                <h1>Available Purchasers</h1>
+                <div class="search-filters">
+                    <div class="search-box">
+                        <i data-lucide="search"></i>
+                        <input type="text" placeholder="Search purchasers...">
+                    </div>
+                    <div class="filters">
+                        <select class="filter-select">
+                            <option value="">All States</option>
+                            <option value="mp">Madhya Pradesh</option>
+                            <option value="up">Uttar Pradesh</option>
+                            <option value="punjab">Punjab</option>
+                        </select>
+                        <select class="filter-select">
+                            <option value="">All Categories</option>
+                            <option value="grains">Grains</option>
+                            <option value="vegetables">Vegetables</option>
+                            <option value="fruits">Fruits</option>
+                        </select>
+                        <button class="btn btn-primary">
+                            <i data-lucide="filter"></i>
+                            <span>Apply Filters</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="purchasers-grid" id="purchasersGrid">
+                <!-- Purchaser cards will be populated by JavaScript -->
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>KrishiUdyam</h3>
+                    <p>Connecting farmers with trusted purchasers for a better agricultural future.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#">Dashboard</a></li>
+                        <li><a href="#">My Products</a></li>
+                        <li><a href="#">Purchasers</a></li>
+                        <li><a href="#">Transactions</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Support</h3>
+                    <ul>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">FAQs</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact</h3>
+                    <p><i data-lucide="mail"></i> support@krishiudyam.com</p>
+                    <p><i data-lucide="phone"></i> +91 1800-123-4567</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2025 KrishiUdyam. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="JS/list.js"></script>
+</body>
+</html>

@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KrishiUdyam - Farmer</title>
+    <!-- Add the correct Lucide library -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <link rel="stylesheet" href="CSS/styles.css">
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="nav">
+        <div class="container">
+            <div class="nav-content">
+                <div class="nav-left">
+                    <span class="logo">KrishiUdyam</span>
+                    <div class="nav-links">
+                        <a href="#" class="nav-link">
+                            <i data-lucide="home"></i>
+                            <span>Home</span>
+                        </a>
+                        <a href="#purchasers" class="nav-link">
+                            <i data-lucide="users"></i>
+                            <span>Find Purchaser</span>
+                        </a>
+                        <a href="#prices" class="nav-link">
+                            <i data-lucide="dollar-sign"></i>
+                            <span>Crop Prices</span>
+                        </a>
+                        <a href="#products" class="nav-link">
+                            <i data-lucide="shopping-cart"></i>
+                            <span>Find Product</span>
+                        </a>
+                        <a href="#about" class="nav-link">
+                            <i data-lucide="info"></i>
+                            <span>About</span>
+                        </a>
+                        <a href="#contact" class="nav-link">
+                            <i data-lucide="phone"></i>
+                            <span>Contact</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="hero">
+        <div class="slider">
+            <img src="https://images.unsplash.com/photo-1500937386664-56d1dfef3854?auto=format&fit=crop&w=1920"
+                alt="Farm" class="slide active">
+            <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1920"
+                alt="Farm" class="slide">
+            <img src="https://images.unsplash.com/photo-1495107334309-fcf20504a5ab?auto=format&fit=crop&w=1920"
+                alt="Farm" class="slide">
+        </div>
+        <div class="hero-content">
+            <div class="container">
+                <div class="hero-text">
+                    <h1>Connect with Trusted Agricultural Partners</h1>
+                    <p>Find the best prices for your crops and connect with verified purchasers</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section class="purchasers" id="purchasers">
+        <div class="container">
+            <h2>Authorized Purchasers</h2>
+
+            <div class="purchaser-grid">
+                <div th:each="purchaser : ${purchasers}" class="card">
+                    <!-- Card Header with Name & Role -->
+                    <div class="card-header">
+                        <div>
+                            <h3 class="card-title" th:text="${purchaser.name}">Purchaser Name</h3>
+                            <p class="text-gray-600" th:text="${purchaser.role}">Role</p>
+                        </div>
+                        <span class="card-rating">★ <span>4.5</span></span>
+                    </div>
+
+                    <!-- Contact & Email Info -->
+                    <div class="card-contact mb-2">
+                        <p><strong>Email:</strong> <span th:text="${purchaser.email}">email@example.com</span></p>
+                        <p><strong>Contact:</strong> <span th:text="${purchaser.contact}">1234567890</span></p>
+                    </div>
+
+                    <!-- Address Details -->
+                    <div class="card-location">
+                        <i data-lucide="map-pin"></i>
+                        <p th:text="${purchaser.address}" style="display: block; margin: 5px 0;">Address</p>
+                        <p th:text="${purchaser.tehsil}" style="display: block; margin: 5px 0;">Tehsil</p>
+                        <p th:text="${purchaser.district}" style="display: block; margin: 5px 0;">District</p>
+                        <p th:text="${purchaser.state}" style="display: block; margin: 5px 0;">State</p>
+
+                    </div>
+
+                    <!-- Govt ID Info -->
+                    <div class="card-id">
+                        <p><strong>ID Type:</strong> <span th:text="${purchaser.id_type}">Aadhar</span></p>
+                        <p><strong>ID Number:</strong> <span th:text="${purchaser.gov_id}">1234-5678-9012</span></p>
+                    </div>
+
+
+
+                    <!-- View Details Button -->
+                    <button class="btn btn-primary w-full mt-4">View Details</button>
+                </div>
+            </div>
+
+            <div class="text-center">
+                <a href="/farmer/purchaserlist" class="btn btn-primary">
+                    Visit Purchaser Page
+                    <i data-lucide="arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="prices" id="prices">
+        <div class="container">
+            <h2>Current Crop Prices</h2>
+
+            <div class="price-grid">
+                <div class="card" th:each="crop : ${basepricedata}">
+                    <h3 class="card-title" th:text="${crop.name}">Crop Name</h3>
+                    <p class="text-3xl text-green-700 font-bold">
+                        ₹<span th:text="${crop.price}">0</span>
+                    </p>
+                    <p class="text-gray-600">per quintal</p>
+                </div>
+            </div>
+
+            <div class="text-center">
+                <a href="/prices" class="btn btn-primary">
+                    Visit Price Page
+                    <i data-lucide="arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="products" id="products">
+        <div class="container">
+            <div class="section-header">
+                <h2>Your Products</h2>
+                <div style="display: flex; justify-content: flex-end;">
+                    <button class="btn btn-primary" id="uploadProductBtn">
+                        <i data-lucide="upload"></i>
+                        <span class="uppd">Upload Product</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Start looping through products -->
+            <div class="product-grid">
+                <div th:each="pro : ${productdata}" class="card">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <h3 class="card-title" th:text="${pro.name}"></h3>
+                            <p class="text-gray-600">
+                                Quantity: <span th:text="${pro.quantity}"></span>
+                            </p>
+                            <p class="text-gray-600">
+                                Quality: <span th:text="${pro.quality}"></span>
+                            </p>
+                            <p class="text-gray-600">
+                                Base Price: ₹<span th:text="${pro.baseprice}"></span> per quintal
+                            </p>
+                            <p class="text-green-700 font-semibold">
+                                Asking Price: ₹<span th:text="${pro.askingprice}"></span> per quintal
+                            </p>
+                        </div>
+
+                        <!-- Static status added manually -->
+                        <span class="px-3 py-1 rounded bg-green-100 text-green-700">Available</span>
+                    </div>
+
+                    <!-- Static button as per status -->
+                    <button class="btn btn-primary mt-4">Update Price</button>
+                </div>
+            </div>
+            <!-- End looping -->
+
+            <div class="text-center mt-4">
+                <a href="/farmer/productview" class="btn btn-primary">
+                    View All Products
+                    <i data-lucide="arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+
+
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="contact-grid">
+                <div class="contact-form">
+                    <h2>Contact Us</h2>
+                    <form>
+                        <div class="form-group">
+                            <label>Name</label>
+                            <input type="text" class="form-input">
+                        </div>
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input type="email" class="form-input">
+                        </div>
+                        <div class="form-group">
+                            <label>Message</label>
+                            <textarea class="form-input"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Send Message</button>
+                    </form>
+                </div>
+                <div class="location" id="about">
+                    <h2>Our Location</h2>
+                    <div class="location-card">
+                        <div class="location-item">
+                            <i data-lucide="map-pin"></i>
+                            <div>
+                                <h3>Head Office</h3>
+                                <p>123 Farmer's Market Road<br>Agricultural District<br>New Delhi, 110001</p>
+                            </div>
+                        </div>
+                        <div class="location-item">
+                            <i data-lucide="mail"></i>
+                            <div>
+                                <h3>Email</h3>
+                                <p>contact@KrishiUdyam.com</p>
+                            </div>
+                        </div>
+                        <div class="location-item">
+                            <i data-lucide="phone"></i>
+                            <div>
+                                <h3>Phone</h3>
+                                <p>+91 11 2345 6789</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="modal" id="uploadModal">
+        <div class="modal-content">
+            <h3>Upload New Product</h3>
+            <form id="uploadForm" th:action="@{/farmer/addproduct}" th:object="${product}" method="post">
+                <div class="form-group">
+                    <label>Product Name</label>
+                    <select class="form-input" th:field="*{name}">
+                        <option value="">Select a product</option>
+                        <option th:each="item : ${basepricedata}" th:value="${item.price}" th:text="${item.name}">
+                            Product Option
+                        </option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Quantity (in quintals)</label>
+                    <input type="text" class="form-input" th:field="*{quantity}" />
+                </div>
+
+                <div class="form-group">
+                    <label>Quality</label>
+                    <select class="form-input" th:field="*{quality}">
+                        <option value="">Select quality</option>
+                        <option value="Poor">Poor</option>
+                        <option value="Very Poor">Very Poor</option>
+                        <option value="Average">Average</option>
+                        <option value="Best">Best</option>
+                        <option value="Good">Good</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Base Price per quintal</label>
+                    <select class="form-input" th:field="*{baseprice}">
+                        <option value="">Select a product</option>
+                        <option th:each="item : ${basepricedata}" th:value="${item.price}"
+                            th:text="${item.name + ' - ₹' + item.price}">
+                            Product Option
+                        </option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Your Asking Price per quintal</label>
+                    <input type="number" class="form-input" th:field="*{askingprice}" />
+                </div>
+
+                <div class="modal-actions">
+                    <button type="button" class="btn btn-secondary" id="cancelUpload">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Upload Product</button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <h3>KrishiUdyam</h3>
+                    <p>Connecting farmers with trusted purchasers for a better agricultural future.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Find Purchaser</a></li>
+                        <li><a href="#">Crop Prices</a></li>
+                        <li><a href="#">About Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Resources</h3>
+                    <ul>
+                        <li><a href="#">Market Updates</a></li>
+                        <li><a href="#">Farming Tips</a></li>
+                        <li><a href="#">Success Stories</a></li>
+                        <li><a href="#">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Newsletter</h3>
+                    <p>Subscribe for market updates and news</p>
+                    <div class="newsletter">
+                        <input type="email" placeholder="Your email" class="form-input">
+                        <button class="btn btn-primary">
+                            <i data-lucide="send"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2025 KrishiUdyam. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="JS/script.js"></script>
+</body>
+
+</html>
