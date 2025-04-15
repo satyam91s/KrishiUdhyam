@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +8,7 @@
     <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
     <link rel="stylesheet" href="CSS/purchaser.css">
 </head>
+
 <body>
     <nav class="nav">
         <div class="container">
@@ -42,9 +44,12 @@
 
     <div class="hero">
         <div class="slider">
-            <img src="https://images.unsplash.com/photo-1472141521881-95d0e87e2e39?auto=format&fit=crop&w=1920" alt="Warehouse" class="slide active">
-            <img src="https://images.unsplash.com/photo-1595665593673-bf1ad72905c0?auto=format&fit=crop&w=1920" alt="Warehouse" class="slide">
-            <img src="https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=1920" alt="Warehouse" class="slide">
+            <img src="https://images.unsplash.com/photo-1472141521881-95d0e87e2e39?auto=format&fit=crop&w=1920"
+                alt="Warehouse" class="slide active">
+            <img src="https://images.unsplash.com/photo-1595665593673-bf1ad72905c0?auto=format&fit=crop&w=1920"
+                alt="Warehouse" class="slide">
+            <img src="https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=1920"
+                alt="Warehouse" class="slide">
         </div>
         <div class="hero-content">
             <div class="container">
@@ -55,24 +60,89 @@
             </div>
         </div>
     </div>
-
     <section class="sellers">
-        <div class="container">
+        <div class="container text-center">
             <h2>Available Sellers</h2>
             <div class="purchaser-grid" id="sellerGrid"></div>
-            <div class="text-center">
+            <!-- <div class="text-center">
                 <a href="/sellers" class="btn btn-primary">
                     View All Sellers
                     <i data-lucide="arrow-right"></i>
                 </a>
+            </div> -->
+        </div>
+    </section>
+
+    <section class="products">
+        <div class="product-grid">
+            <div th:each="hello : ${productdata}" class="card" style="border: 1px solid #ddd; padding: 15px; margin-bottom: 20px; border-radius: 10px; margin-left: 70px;">
+                <div style="display: flex; justify-content: space-between;">
+                    <div>
+                        <h3 th:text="${hello.name}"></h3>
+                        <p>Quantity: <span th:text="${hello.quantity}"></span></p>
+                        <p>Quality: <span th:text="${hello.quality}"></span></p>
+                        <p>Base Price: ₹<span th:text="${hello.baseprice}"></span> per quintal</p>
+                        
+                        <p style="color: green; font-weight: bold;">
+                            Asking Price: ₹<span th:text="${hello.askingprice}"></span> per quintal
+                        </p>
+                        <p style="color: rgb(4, 23, 4); font-weight: bold;">More Applied Bids</p>
+                        <p style="color: brown; font-weight: bold;">Rakesh Sharma Bids: <span style="color: #065f46;">₹580 per quintal</span> </p>
+                        <p style="color: brown; font-weight: bold;">Mahesh Prajapat Bids: <span style="color: #065f46;">₹520 per quintal</span></p>
+                        <p style="color: brown; font-weight: bold;">Bhupendra Singh Bids: <span style="color: #065f46;">₹550 per quintal</span></p>
+                    </div>
+                    <span style="background-color: #d1fae5; color: #065f46; padding: 4px 10px; border-radius: 5px;">Available</span>
+                </div>
+    
+                <!-- Action buttons -->
+                <button onclick="openFinalizeModal()" style="margin-top: 10px; background-color: green; color: white; border-style: none; border-radius: 5px; padding-left: 5px; padding-right: 5px; padding-top: 5px; padding-bottom: 5px;">Finalize with Asking Price</button>
+                <button onclick="openReductionModal()" style="margin-top: 10px; background-color: green; color: white; border-style: none; border-radius: 5px; padding-left: 5px; padding-right: 5px; padding-top: 5px; padding-bottom: 5px;">Apply Your Bid</button>
+            </div>
+        </div>
+    
+        <div style="text-align: center; margin-top: 20px;">
+            <a href="/farmer/productview">
+                <button style="margin-top: 10px; background-color: green; color: white; border-style: none; border-radius: 5px; padding-left: 5px; padding-right: 5px; padding-top: 5px; padding-bottom: 5px;">View All Products</button>
+            </a>
+        </div>
+    
+        <!-- Finalize Modal -->
+        <div id="finalizeModal" style="display:none; position: fixed; inset: 0; background-color: rgba(0,0,0,0.5); z-index: 1000;">
+            <div style="background: white; padding: 20px; border-radius: 10px; margin: 10% auto; width: 300px; text-align: center;">
+                <h2 style="color: #065f46;">Confirm Finalization</h2>
+                <p >Are you sure you want to finalize this deal?</p>
+                <br />
+                <button onclick="closeFinalizeModal()" style="padding: 5px 7px 7px 5px; border-radius: 4px; border-style: none; background-color: green; color: white; font-weight: bold;">Cancel</button>
+                <button onclick="confirmFinalize()" style="padding: 5px 7px 7px 5px; border-radius: 4px; border-style: none; background-color: green; color: white; font-weight: bold;">Yes, Finalize</button>
+            </div>
+        </div>
+    
+        <!-- Reduction Modal -->
+        <div id="reductionModal" style="display:none; position: fixed; inset: 0; background-color: rgba(0,0,0,0.5); z-index: 1000;">
+            <div style="background: white; padding: 20px; border-radius: 10px; margin: 10% auto; width: 350px;">
+                <h2 style="color: #065f46;">Apply Your Bid</h2>
+                
+                <input type="text" hidden id="productid"  placeholder="Eg. Organic Traders" style="width: 80%; height: 50%; margin-top: 10px; padding: 5px 7px 7px 5px; border-style: none; border-radius: 5px; background-color: rgb(243, 243, 243); " />
+                <p style="font-weight: bold;">Enter Organization Name:</p>
+                <input type="text" id="orgname" placeholder="Eg. Organic Traders" style="width: 80%; height: 50%; margin-top: 10px; padding: 5px 7px 7px 5px; border-style: none; border-radius: 5px; background-color: rgb(243, 243, 243); " />
+                <p style="font-weight: bold;">Enter Your Name:</p>
+                <input type="text" id="name" placeholder="Eg. Satyam Dubey" style="width: 80%; height: 50%; margin-top: 10px; padding: 5px 7px 7px 5px; border-style: none; border-radius: 5px; background-color: rgb(243, 243, 243)y; " />
+                <p style="font-weight: bold;">Enter the price you wish to negotiate:</p>
+                <input type="number" id="newPrice" placeholder="₹ New price" style="width: 80%; height: 50%; margin-top: 10px; padding: 5px 7px 7px 5px; border-style: none; border-radius: 5px; background-color: rgb(243, 243, 243); " />
+                <br /><br />
+                <button onclick="closeReductionModal()"  style="padding: 5px 7px 7px 5px; border-radius: 4px; border-style: none; background-color: green; color: white; font-weight: bold;">Cancel</button>
+                <button onclick="submitPriceReduction()" style="padding: 5px 7px 7px 5px; border-radius: 4px; border-style: none; background-color: green; color: white; font-weight: bold;">Submit</button>
             </div>
         </div>
     </section>
+    
+    
+
 
     <section class="prices">
         <div class="container">
             <h2>Current Crop Prices</h2>
-    
+
             <div class="price-grid">
                 <div class="card" th:each="crop : ${baseprice}">
                     <h3 class="card-title" th:text="${crop.name}">Crop Name</h3>
@@ -82,7 +152,7 @@
                     <p class="text-gray-600">per quintal</p>
                 </div>
             </div>
-    
+
             <div class="text-center">
                 <a href="/prices" class="btn btn-primary">
                     Visit Price Page
@@ -91,7 +161,7 @@
             </div>
         </div>
     </section>
-    
+
 
     <section class="products">
         <div class="container">
@@ -203,4 +273,40 @@
 
     <script src="JS/purchaser.js"></script>
 </body>
+
+<script>
+    function openFinalizeModal() {
+        document.getElementById('finalizeModal').style.display = 'block';
+    }
+
+    function closeFinalizeModal() {
+        document.getElementById('finalizeModal').style.display = 'none';
+    }
+
+    function confirmFinalize() {
+        alert("Deal finalized successfully!");
+        closeFinalizeModal();
+    }
+
+    function openReductionModal() {
+        document.getElementById('reductionModal').style.display = 'block';
+    }
+
+    function closeReductionModal() {
+        document.getElementById('reductionModal').style.display = 'none';
+    }
+
+    function submitPriceReduction() {
+        const newPrice = document.getElementById('newPrice').value;
+        if (newPrice) {
+            alert("You requested to reduce the price to ₹" + newPrice);
+            closeReductionModal();
+        } else {
+            alert("Please enter a valid price.");
+        }
+    }
+</script>
+
+
+
 </html>

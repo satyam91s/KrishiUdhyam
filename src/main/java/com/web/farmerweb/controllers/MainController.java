@@ -68,6 +68,12 @@ public class MainController {
     @GetMapping("/purchaser")
     public String purchaser(Model model) {
         model.addAttribute("pricedata", new BasePrice());
+        model.addAttribute("productdata", new Product());
+
+         // Product List Rendering
+         List<Product> productdata = ps.getData();
+         System.out.println(productdata);
+         model.addAttribute("productdata", productdata);
 
         // Base Price List Rendering
         List<BasePrice> baseprice = gs.getPrice();
@@ -91,6 +97,16 @@ public class MainController {
     @GetMapping("/login")
     public String login() {
         return "authenticForms/login";
+    }
+    
+    @GetMapping("/purchaserlogin")
+    public String plogin() {
+        return "authenticForms/purchaserlogin";
+    }
+    
+    @GetMapping("/govlogin")
+    public String glogin() {
+        return "authenticForms/govlogin";
     }
     
 

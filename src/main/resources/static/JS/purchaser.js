@@ -136,7 +136,7 @@ sellers.forEach(seller => {
                 `).join('')}
             </ul>
         </div>
-        <button class="btn btn-primary w-full mt-4">View Products</button>
+        <button class="btn btn-primary w-full mt-4">Contact Details</button>
     `;
     sellerGrid.appendChild(card);
     lucide.createIcons({

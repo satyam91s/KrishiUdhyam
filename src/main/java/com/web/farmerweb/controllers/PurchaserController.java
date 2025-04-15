@@ -21,7 +21,7 @@ public class PurchaserController {
     public String registerPurchaser(@ModelAttribute Purchaser purchaser, Model model) {
         pcs.saveData(purchaser);
         model.addAttribute("message", "Purchaser registered successfully!");
-        return "redirect:/login";
+        return "redirect:/purchaserlogin";
     }
     
 }

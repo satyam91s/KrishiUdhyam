@@ -6,6 +6,282 @@
     <title>Available Purchasers - KrishiUdyam</title>
     <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
     <link rel="stylesheet" href="CSS/lists.css">
+    <style>
+        /* Base styles */
+:root {
+    --primary: #15803d;
+    --primary-hover: #166534;
+    --primary-light: #dcfce7;
+    --text: #1f2937;
+    --text-light: #6b7280;
+    --bg-light: #f9fafb;
+    --white: #ffffff;
+    --border: #e5e7eb;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: system-ui, -apple-system, sans-serif;
+    color: var(--text);
+    line-height: 1.5;
+    background-color: var(--bg-light);
+}
+
+.container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+/* Navbar */
+.navbar {
+    background-color: var(--white);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+}
+
+.nav-content {
+    height: 4rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-left {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: var(--primary);
+    text-decoration: none;
+}
+
+.nav-links {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.nav-link {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--text-light);
+    text-decoration: none;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    transition: all 0.2s;
+}
+
+.nav-link:hover,
+.nav-link.active {
+    color: var(--primary);
+    background-color: var(--primary-light);
+}
+
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+/* Main Content */
+.main-content {
+    margin-top: 4rem;
+    padding: 2rem 0;
+}
+
+.page-header {
+    margin-bottom: 2rem;
+}
+
+.page-header h1 {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 1.5rem;
+}
+
+/* Search and Filters */
+.search-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    align-items: center;
+    justify-content: space-between;
+    background-color: var(--white);
+    padding: 1rem;
+    border-radius: 0.75rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.search-box {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background-color: var(--bg-light);
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    flex: 1;
+    max-width: 400px;
+}
+
+.search-box input {
+    border: none;
+    background: none;
+    outline: none;
+    width: 100%;
+    font-size: 1rem;
+}
+
+.filters {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.filter-select {
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--border);
+    border-radius: 0.5rem;
+    background-color: var(--white);
+    font-size: 1rem;
+    color: var(--text);
+    cursor: pointer;
+}
+
+/* Grid Layouts */
+.purchasers-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.purchaser-card {
+    background-color: var(--white);
+    border-radius: 0.75rem;
+    padding: 1.5rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.purchaser-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Footer */
+.footer {
+    background-color: var(--primary);
+    color: var(--white);
+    padding: 4rem 0 2rem;
+    margin-top: 4rem;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+.footer-section h3 {
+    font-size: 1.25rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+.footer-section ul {
+    list-style: none;
+}
+
+.footer-section ul li {
+    margin-bottom: 0.5rem;
+}
+
+.footer-section a {
+    color: var(--primary-light);
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.footer-section a:hover {
+    color: var(--white);
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Buttons */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+    border: none;
+}
+
+.btn-primary {
+    background-color: var(--primary);
+    color: var(--white);
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-hover);
+}
+
+.btn-outline {
+    border: 1px solid var(--border);
+    background-color: var(--white);
+    color: var(--text);
+}
+
+.btn-outline:hover {
+    background-color: var(--bg-light);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+    }
+
+    .search-filters {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .filters {
+        flex-wrap: wrap;
+    }
+
+    .footer-content {
+        grid-template-columns: 1fr;
+    }
+}
+    </style>
 </head>
 <body>
     <nav class="navbar">
@@ -122,6 +398,105 @@
         </div>
     </footer>
 
-    <script src="JS/list.js"></script>
+    <script >
+        // Initialize Lucide icons
+lucide.createIcons();
+
+// Sample purchasers data
+const purchasers = [
+    {
+        id: 1,
+        name: "Global Agri Traders",
+        type: "Wholesale Purchaser",
+        location: "Mumbai, Maharashtra",
+        rating: 4.8,
+        verified: true,
+        categories: ["Grains", "Pulses"],
+        requiredQuantity: "1000+ quintals",
+        activeDeals: 15,
+        image: "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&w=400"
+    },
+    {
+        id: 2,
+        name: "Fresh Foods Ltd",
+        type: "Retail Chain",
+        location: "Delhi, NCR",
+        rating: 4.6,
+        verified: true,
+        categories: ["Vegetables", "Fruits"],
+        requiredQuantity: "500+ quintals",
+        activeDeals: 8,
+        image: "https://images.unsplash.com/photo-1542744094-24638eff58bb?auto=format&fit=crop&w=400"
+    },
+    // Add more purchasers...
+];
+
+// Render purchaser cards
+const purchasersGrid = document.getElementById('purchasersGrid');
+
+function renderPurchasers(purchasersList) {
+    purchasersGrid.innerHTML = purchasersList.map(purchaser => `
+        <div class="purchaser-card">
+            <div class="card-header">
+                <img src="${purchaser.image}" alt="${purchaser.name}" class="purchaser-image">
+                <div class="purchaser-info">
+                    <h3>${purchaser.name}</h3>
+                    <p class="type">${purchaser.type}</p>
+                    <div class="rating">
+                        <i data-lucide="star" class="star-icon"></i>
+                        <span>${purchaser.rating}</span>
+                        ${purchaser.verified ? '<span class="verified-badge">Verified</span>' : ''}
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="location">
+                    <i data-lucide="map-pin"></i>
+                    <span>${purchaser.location}</span>
+                </div>
+                <div class="categories">
+                    <h4>Interested in:</h4>
+                    <div class="category-tags">
+                        ${purchaser.categories.map(cat => `<span class="tag">${cat}</span>`).join('')}
+                    </div>
+                </div>
+                <div class="stats">
+                    <div class="stat">
+                        <i data-lucide="package"></i>
+                        <span>Required: ${purchaser.requiredQuantity}</span>
+                    </div>
+                    <div class="stat">
+                        <i data-lucide="handshake"></i>
+                        <span>${purchaser.activeDeals} Active Deals</span>
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer">
+                <button class="btn btn-primary">Contact Purchaser</button>
+                <button class="btn btn-outline">View Details</button>
+            </div>
+        </div>
+    `).join('');
+    
+    // Reinitialize icons for new content
+    lucide.createIcons();
+}
+
+// Initial render
+renderPurchasers(purchasers);
+
+// Search functionality
+const searchInput = document.querySelector('.search-box input');
+searchInput.addEventListener('input', (e) => {
+    const searchTerm = e.target.value.toLowerCase();
+    const filteredPurchasers = purchasers.filter(purchaser => 
+        purchaser.name.toLowerCase().includes(searchTerm) ||
+        purchaser.location.toLowerCase().includes(searchTerm) ||
+        purchaser.categories.some(cat => cat.toLowerCase().includes(searchTerm))
+    );
+    renderPurchasers(filteredPurchasers);
+});
+
+    </script>
 </body>
 </html>

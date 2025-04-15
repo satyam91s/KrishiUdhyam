@@ -111,7 +111,7 @@
 
 
                     <!-- View Details Button -->
-                    <button class="btn btn-primary w-full mt-4">View Details</button>
+                   
                 </div>
             </div>
 
@@ -163,30 +163,36 @@
 
             <!-- Start looping through products -->
             <div class="product-grid">
-                <div th:each="pro : ${productdata}" class="card">
-                    <div class="flex justify-between items-start">
+                <div th:each="hello : ${productdata}" class="card">
+                    <div class="flex justify-between items-start" style="display: flex; justify-content: space-between;">
                         <div>
-                            <h3 class="card-title" th:text="${pro.name}"></h3>
+                            <h3 class="card-title" th:text="${hello.name}"></h3>
                             <p class="text-gray-600">
-                                Quantity: <span th:text="${pro.quantity}"></span>
-                            </p>
-                            <p class="text-gray-600">
-                                Quality: <span th:text="${pro.quality}"></span>
+                                Quantity: <span th:text="${hello.quantity}"></span>
                             </p>
                             <p class="text-gray-600">
-                                Base Price: ₹<span th:text="${pro.baseprice}"></span> per quintal
+                                Quality: <span th:text="${hello.quality}"></span>
                             </p>
-                            <p class="text-green-700 font-semibold">
-                                Asking Price: ₹<span th:text="${pro.askingprice}"></span> per quintal
+                            <p class="text-gray-600">
+                                Base Price: ₹<span th:text="${hello.baseprice}"></span> per quintal
                             </p>
+                            <p class="text-green-700 font-semibold" style="font-weight: bold; color: green;">
+                                Asking Price: ₹<span th:text="${hello.askingprice}"></span> per quintal
+                            </p>
+
+                            <p style="font-weight: bold; color: black;">Purchaser Bids: </p>
+                            <p style="font-weight: bolder; font-size: 12px;"><span style="color: chocolate;">Oranic Traders</span> | <span style="color: #065f46;"> Bhuperdra Singh </span> | <span style="color: brown;"> ₹550 per quintal</span> | <span><button style="margin-left: 2px; margin-top: 7px; color: rgb(255, 255, 255); font-weight: bold; padding: 5px 7px 5px 7px; background-color: rgb(163, 74, 74); border-radius: 5px; border-style: none;">Accept</button></span> </p>
+                            <p style="font-weight: bolder; font-size: 12px;"><span style="color: chocolate;">Crop Mart Traders</span> | <span style="color: #065f46;"> Muskesh Sharma </span> | <span style="color: brown;"> ₹580 per quintal</span> | <span><button style="margin-left: 2px; margin-top: 7px; color: rgb(255, 255, 255); font-weight: bold; padding: 5px 7px 5px 7px; background-color: rgb(163, 74, 74); border-radius: 5px; border-style: none;">Accept</button></span> </p>
+                            <p style="font-weight: bolder; font-size: 12px;"><span style="color: chocolate;">Semi Gov. Traders</span> | <span style="color: #065f46;"> Rakesh Singh </span> | <span style="color: brown;"> ₹600 per quintal</span> | <span><button style="margin-left: 2px; margin-top: 7px; color: rgb(255, 255, 255); font-weight: bold; padding: 5px 7px 5px 7px; background-color: rgb(163, 74, 74); border-radius: 5px; border-style: none;">Accept</button></span> </p>
                         </div>
 
                         <!-- Static status added manually -->
-                        <span class="px-3 py-1 rounded bg-green-100 text-green-700">Available</span>
+                        <span style="background-color: #d1fae5; color: #065f46; padding: 4px 10px; border-radius: 5px;">Available</span>
                     </div>
 
                     <!-- Static button as per status -->
-                    <button class="btn btn-primary mt-4">Update Price</button>
+                    <button class="btn btn-primary mt-4" style="margin-left: -2px; margin-top: 7px;">Update Price</button>
+                    <button class="btn btn-primary mt-4" style="margin-left: -2px; margin-top: 7px;">Remove</button>
                 </div>
             </div>
             <!-- End looping -->
@@ -261,11 +267,12 @@
                     <label>Product Name</label>
                     <select class="form-input" th:field="*{name}">
                         <option value="">Select a product</option>
-                        <option th:each="item : ${basepricedata}" th:value="${item.price}" th:text="${item.name}">
-                            Product Option
+                        <option th:each="item : ${basepricedata}" 
+                                th:value="${item.name}" 
+                                th:text="${item.name}">
                         </option>
                     </select>
-                </div>
+                </div>                
 
                 <div class="form-group">
                     <label>Quantity (in quintals)</label>
